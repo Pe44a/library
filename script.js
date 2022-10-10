@@ -1,3 +1,6 @@
+const body = document.querySelector('body');
+
+
 let myLibrary = [];
 
 function book(title, author, pages, haveYouReadTheBook) {
@@ -11,3 +14,12 @@ function book(title, author, pages, haveYouReadTheBook) {
       const newBook = new book(title, author, pages, haveYouReadTheBook);
       myLibrary.push(newBook);
     }
+
+    for (var i = 0; i < myLibrary.length; i++) {
+        const div = document.createElement('div');
+        body.appendChild(div);
+        let text = document.createTextNode(myLibrary[i].title + ' ' + myLibrary[i].author + ' ' + myLibrary[i].pages+ ' ' + myLibrary[i].haveYouReadTheBook);
+        div.appendChild(text);
+    }
+
+    
