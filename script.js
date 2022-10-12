@@ -1,4 +1,7 @@
 const body = document.querySelector('body');
+const newBook = document.querySelector('#newBook');
+const form = document.querySelector('.form');
+const submitForm = document.querySelector('#submitForm');
 
 
 let myLibrary = [];
@@ -22,4 +25,13 @@ function book(title, author, pages, haveYouReadTheBook) {
         div.appendChild(text);
     }
 
+    document.addEventListener('DOMContentLoaded', () => {
+      form.classList.toggle('form-invisible');
+    });
+
+    newBook.addEventListener('click', () => {
+        form.classList.toggle('form-invisible');
+    });
+
     
+
