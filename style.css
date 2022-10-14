@@ -1,17 +1,51 @@
 body {
     height: 100vh;
     width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: bisque;
 }
 
 
 .form {
     position: absolute;
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto; 
+    left: 40%;
+    right: 40%;
+    top: 30%;
+    width: min(30%, 300px);
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    font-size: 25px;
+    background-color: white;
 }
 
 .form-invisible {
     display: none;
+}
+
+.newBook {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+#newBook {
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+
+}
+
+#submit-form {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#title,
+#author,
+#pages {
+    margin: 6px 0 6px;
+    width: min(80%, 400px);
 }
