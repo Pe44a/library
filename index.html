@@ -10,7 +10,7 @@
 </head>
 <body>
     <button id="newBook">New book</button>
-    <div class="form">
+    <div class="form form-invisible"  >
         <form action=""  method="get">
 
             <legend>Add new book</legend>
@@ -33,12 +33,10 @@
             <div>
                 <p>Have you read it?</p>
                 <label for="yes" >Yes</label>
-                <input type="radio" id="yes" name="haveYouReadIt" value="yes" required>
-                <label for="no">No</label>
-                <input type="radio" id="no" name="haveYouReadIt" value="no" required>
+                <input type="checkbox" id="yes" name="haveYouReadIt">
             </div>
 
-            <button type="submit"></button>
+            <button type="submit" id="submit-form">Add</button>
         </form>
     </div>
     
