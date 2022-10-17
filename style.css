@@ -8,8 +8,8 @@ body {
 
 .form {
     position: absolute;
-    left: 40%;
-    right: 40%;
+    left: 41%;
+    right: 41%;
     top: 30%;
     width: min(30%, 300px);
     border: 2px solid black;
@@ -48,4 +48,19 @@ body {
 #pages {
     margin: 6px 0 6px;
     width: min(80%, 400px);
+}
+
+.libray {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    margin: 25px;
+    padding: 15px;
+    background-color: white;
 }

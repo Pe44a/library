@@ -2,6 +2,7 @@ const body = document.querySelector('body');
 const newBook = document.querySelector('#newBook');
 const form = document.querySelector('.form');
 const submitForm = document.querySelector('#submit-form');
+const bookCards = document.querySelector('.libray')
 
 // Input values
 let titleInput = document.querySelector('#title');
@@ -38,16 +39,28 @@ function book(title, author, pages, haveYouReadTheBook) {
     }
 
     function displayBook() {
-          const div = document.createElement('div');
-          body.appendChild(div);
-          let titleDisplay = myLibrary.slice(-1)[0].title; 
-          let authorDisplay = myLibrary.slice(-1)[0].author;
-          let pagesDisplay = myLibrary.slice(-1)[0].pages;
-          let haveYouReadTheBookDisplay = myLibrary.slice(-1)[0].haveYouReadTheBook;
 
-          let lastBook = myLibrary.slice(-1);
-          let text = document.createTextNode(titleDisplay + ' ' + authorDisplay + ' ' + pagesDisplay+ ' ' + haveYouReadTheBookDisplay);
-          div.appendChild(text);
+          // Book div
+          const book = document.createElement('div');
+          book.classList.add('book')
+          bookCards.appendChild(book);
+
+          // Text divs
+          let titleDisplay = document.createElement('div');
+          titleDisplay.textContent = myLibrary.slice(-1)[0].title;
+          book.appendChild(titleDisplay);
+
+          let authorDisplay = document.createElement('div');
+          authorDisplay.textContent = myLibrary.slice(-1)[0].author;
+          book.appendChild(authorDisplay);
+
+          let pagesDisplay = document.createElement('div');
+          pagesDisplay.textContent = myLibrary.slice(-1)[0].pages;
+          book.appendChild(pagesDisplay);
+
+          let haveYouReadTheBookDisplay = document.createElement('div');
+          haveYouReadTheBookDisplay.textContent = myLibrary.slice(-1)[0].haveYouReadTheBook;
+          book.appendChild(haveYouReadTheBookDisplay);
   }
   
     function submitFormData(e) {
@@ -55,9 +68,9 @@ function book(title, author, pages, haveYouReadTheBook) {
 
       // Checks whether the checkbox is checked
       if(haveYouReadTheBookInput.checked) {
-        haveYouReadTheBookInput.value = 'Yes';
+        haveYouReadTheBookInput.value = 'Have read';
       } else{
-        haveYouReadTheBookInput.value = 'No';
+        haveYouReadTheBookInput.value = 'Not read';
       }
     
       addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, haveYouReadTheBookInput.value);
