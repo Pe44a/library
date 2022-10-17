@@ -58,9 +58,16 @@ body {
 .book {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 200px;
+    align-items: center;
+    font-size: 25px;
+    width: 290px;
+    height: 340px;
     margin: 25px;
-    padding: 15px;
+    padding: 20px;
+    border-radius: 5px;
     background-color: white;
+}
+
+.book > div {
+    margin-bottom: 15px;
 }
