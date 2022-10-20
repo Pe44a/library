@@ -29,19 +29,6 @@ function book(title, author, pages, haveYouReadTheBook) {
 
     submitForm.addEventListener('click', submitFormData);
 
-    // readButton.addEventListener('click', function(e) {
-    //   console.log('hello')
-    //   if(e.target.classList.contains('read-book')) {
-    //     console.log('hello');
-    //       haveYouReadTheBookDisplay.classList.toggle('have-read');
-    //     } else{
-    //       haveYouReadTheBookDisplay.classList.toggle('have-not-read');
-    //     }
-    // });
-        
-    
-    
-
     function addBookToLibrary(title, author, pages, haveYouReadTheBook) {
       const newBook = new book(title, author, pages, haveYouReadTheBook);
       myLibrary.push(newBook);
@@ -76,9 +63,15 @@ function book(title, author, pages, haveYouReadTheBook) {
           book.appendChild(pagesDisplay);
 
           let haveYouReadTheBookDisplay = document.createElement('button');
-          haveYouReadTheBookDisplay.classList.add('read-book')
+          haveYouReadTheBookDisplay.classList.add('read-book');
           haveYouReadTheBookDisplay.textContent = myLibrary.slice(-1)[0].haveYouReadTheBook;
           book.appendChild(haveYouReadTheBookDisplay);
+
+          let removeButton = document.createElement('button');
+          removeButton.classList.add('remove-button');
+          removeButton.textContent = 'Remove';
+          book.appendChild(removeButton);
+
 
           // Checks whether the checkbox is checked, if so adds appropriate class
           if(haveYouReadTheBookInput.checked) {
@@ -89,7 +82,7 @@ function book(title, author, pages, haveYouReadTheBook) {
 
           //Changes text and buttons class according to situation
           haveYouReadTheBookDisplay.addEventListener('click', function() {
-            
+
             if(haveYouReadTheBookDisplay.classList.contains('have-read')) {
               haveYouReadTheBookDisplay.classList.toggle('have-read');
               haveYouReadTheBookDisplay.classList.toggle('have-not-read');
