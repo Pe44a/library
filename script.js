@@ -87,7 +87,19 @@ function book(title, author, pages, haveYouReadTheBook) {
             haveYouReadTheBookDisplay.classList.toggle('have-not-read');
           }
 
-          
+          //Changes text and buttons class according to situation
+          haveYouReadTheBookDisplay.addEventListener('click', function() {
+            
+            if(haveYouReadTheBookDisplay.classList.contains('have-read')) {
+              haveYouReadTheBookDisplay.classList.toggle('have-read');
+              haveYouReadTheBookDisplay.classList.toggle('have-not-read');
+                haveYouReadTheBookDisplay.textContent = 'Not read';
+            } else {
+              haveYouReadTheBookDisplay.classList.toggle('have-read');
+              haveYouReadTheBookDisplay.classList.toggle('have-not-read');
+                haveYouReadTheBookDisplay.textContent = 'Have read';
+            }
+          });  
   }
   
     function submitFormData(e) {
