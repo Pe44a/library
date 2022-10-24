@@ -1,6 +1,6 @@
 # libray
 
-Check out project here: https://pe44a.github.io/libray/
+Check out project here: https://pe44a.github.io/library/
 
 About project: This is library project, you can create a new book object and edit in real time its read status.
 
