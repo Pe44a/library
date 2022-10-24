@@ -68,7 +68,8 @@ body {
     background-color: white;
 }
 
-.book > div {
+.book > div,
+.book > button {
     margin-bottom: 15px;
 }
 
@@ -81,6 +82,12 @@ body {
 
 .have-not-read {
     background-color: rgb(248, 178, 178);
+    padding: 6px;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+.remove-button {
     padding: 6px;
     border: solid 2px black;
     border-radius: 10px;

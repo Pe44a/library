@@ -4,22 +4,20 @@ const form = document.querySelector('.form');
 const submitForm = document.querySelector('#submit-form');
 const bookCards = document.querySelector('.libray');
 
-// let readButton = document.querySelectorAll('.read-book');
-
 // Input values
 let titleInput = document.querySelector('#title');
 let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
-let haveYouReadTheBookInput = document.querySelector('#yes');
+let readInput = document.querySelector('#yes');
 
 
 let myLibrary = [];
 
-function book(title, author, pages, haveYouReadTheBook) {
+function book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.haveYouReadTheBook = haveYouReadTheBook;
+    this.read = read;
     }
 
     //Toggle input form
@@ -29,8 +27,8 @@ function book(title, author, pages, haveYouReadTheBook) {
 
     submitForm.addEventListener('click', submitFormData);
 
-    function addBookToLibrary(title, author, pages, haveYouReadTheBook) {
-      const newBook = new book(title, author, pages, haveYouReadTheBook);
+    function addBookToLibrary(title, author, pages, read) {
+      const newBook = new book(title, author, pages, read);
       myLibrary.push(newBook);
     }
 
@@ -38,76 +36,87 @@ function book(title, author, pages, haveYouReadTheBook) {
       titleInput.value = null;
       authorInput.value = null;
       pagesInput.value = null;
-      haveYouReadTheBookInput.value = null;
+      readInput.value = null;
+    }
+
+    function clearBookCards() {
+      document.querySelectorAll('.book').forEach(e => e.remove());
+    } 
+
+
+    function createBook() {
+      //Clears out book cards to eliminate duplication
+      clearBookCards()
+      for (let i = 0; i < myLibrary.length; i++) {
+        displayBook(myLibrary[i]);
+      }
     }
 
 
-    function displaysBookUpdatesButtonsValues() {
+  function displayBook(book) {
+    
+    // Book div
+    const bookDiv = document.createElement('div');
+    bookDiv.classList.add('book');
+    bookDiv.setAttribute('id', myLibrary.indexOf(book))
+    bookCards.appendChild(bookDiv);
 
-          // Book div
-          const book = document.createElement('div');
-          book.classList.add('book')
-          bookCards.appendChild(book);
+    // Text divs
+    let titleDisplay = document.createElement('div');
+    titleDisplay.textContent = book.title;
+    bookDiv.appendChild(titleDisplay);
 
-          // Text divs
-          let titleDisplay = document.createElement('div');
-          titleDisplay.textContent = myLibrary.slice(-1)[0].title;
-          book.appendChild(titleDisplay);
+    let authorDisplay = document.createElement('div');
+    authorDisplay.textContent = book.author;
+    bookDiv.appendChild(authorDisplay);
 
-          let authorDisplay = document.createElement('div');
-          authorDisplay.textContent = myLibrary.slice(-1)[0].author;
-          book.appendChild(authorDisplay);
+    let pagesDisplay = document.createElement('div');
+    pagesDisplay.textContent = book.pages;
+    bookDiv.appendChild(pagesDisplay);
 
-          let pagesDisplay = document.createElement('div');
-          pagesDisplay.textContent = myLibrary.slice(-1)[0].pages;
-          book.appendChild(pagesDisplay);
+    //Button
+    let readDisplay = document.createElement('button');
+    readDisplay.classList.add('read-book');
+    readDisplay.textContent = book.read;
+    bookDiv.appendChild(readDisplay);
 
-          let haveYouReadTheBookDisplay = document.createElement('button');
-          haveYouReadTheBookDisplay.classList.add('read-book');
-          haveYouReadTheBookDisplay.textContent = myLibrary.slice(-1)[0].haveYouReadTheBook;
-          book.appendChild(haveYouReadTheBookDisplay);
+    // Checks whether the book have been read, if so adds appropriate class
+    if(book.read === 'Have read') {
+      readDisplay.classList.toggle('have-read');
+    } else {
+      readDisplay.classList.toggle('have-not-read');
+    }
 
-          let removeButton = document.createElement('button');
-          removeButton.classList.add('remove-button');
-          removeButton.textContent = 'Remove';
-          book.appendChild(removeButton);
+    //Changes text and buttons class according to situation
+    readDisplay.addEventListener('click', function() {
 
-
-          // Checks whether the checkbox is checked, if so adds appropriate class
-          if(haveYouReadTheBookInput.checked) {
-            haveYouReadTheBookDisplay.classList.toggle('have-read');
-          } else{
-            haveYouReadTheBookDisplay.classList.toggle('have-not-read');
-          }
-
-          //Changes text and buttons class according to situation
-          haveYouReadTheBookDisplay.addEventListener('click', function() {
-
-            if(haveYouReadTheBookDisplay.classList.contains('have-read')) {
-              haveYouReadTheBookDisplay.classList.toggle('have-read');
-              haveYouReadTheBookDisplay.classList.toggle('have-not-read');
-                haveYouReadTheBookDisplay.textContent = 'Not read';
-            } else {
-              haveYouReadTheBookDisplay.classList.toggle('have-read');
-              haveYouReadTheBookDisplay.classList.toggle('have-not-read');
-                haveYouReadTheBookDisplay.textContent = 'Have read';
-            }
-          });  
-  }
+      if(readDisplay.classList.contains('have-read')) {
+        readDisplay.classList.toggle('have-read');
+        readDisplay.classList.toggle('have-not-read');
+          readDisplay.textContent = 'Not read';
+          book.read = 'Not read';
+      } else {
+        readDisplay.classList.toggle('have-read');
+        readDisplay.classList.toggle('have-not-read');
+          readDisplay.textContent = 'Have read';
+          book.read = 'Have read';
+      }
+    });  
+   }
   
     function submitFormData(e) {
       e.preventDefault();
 
       // Checks whether the checkbox is checked
-      if(haveYouReadTheBookInput.checked) {
-        haveYouReadTheBookInput.value = 'Have read';
+      if(readInput.checked) {
+        readInput.value = 'Have read';
       } else{
-        haveYouReadTheBookInput.value = 'Not read';
+        readInput.value = 'Not read';
       }
     
-      addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, haveYouReadTheBookInput.value);
+      addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
 
-      displaysBookUpdatesButtonsValues();
+      createBook();
       resetInputValues()
     
       form.classList.toggle('form-invisible');
