@@ -45,7 +45,7 @@ function book(title, author, pages, read) {
 
 
     function createBook() {
-      //Clears out book cards to eliminate duplication
+      //Clears out book cards to eliminate duplication 
       clearBookCards()
       for (let i = 0; i < myLibrary.length; i++) {
         displayBook(myLibrary[i]);
