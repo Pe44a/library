@@ -74,11 +74,16 @@ function book(title, author, pages, read) {
     pagesDisplay.textContent = book.pages;
     bookDiv.appendChild(pagesDisplay);
 
-    //Button
+    //Buttons
     let readDisplay = document.createElement('button');
     readDisplay.classList.add('read-book');
     readDisplay.textContent = book.read;
     bookDiv.appendChild(readDisplay);
+    
+    let removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    bookDiv.appendChild(removeButton);
+
 
     // Checks whether the book have been read, if so adds appropriate class
     if(book.read === 'Have read') {
@@ -102,6 +107,13 @@ function book(title, author, pages, read) {
           book.read = 'Have read';
       }
     });  
+
+      removeButton.addEventListener('click', function() {
+        //Removes selected book from myLibray
+        myLibrary.splice(myLibrary.indexOf(book), 1)
+        //Displays new order
+        createBook();
+      });
    }
   
     function submitFormData(e) {
