@@ -51,7 +51,7 @@ body {
     width: min(80%, 400px);
 }
 
-.libray {
+.library {
     display: flex;
     flex-wrap: wrap
 }
