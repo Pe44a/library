@@ -58,7 +58,6 @@ function book(title, author, pages, read) {
     // Book div
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
-    bookDiv.setAttribute('id', myLibrary.indexOf(book))
     bookCards.appendChild(bookDiv);
 
     // Text divs
@@ -81,6 +80,7 @@ function book(title, author, pages, read) {
     bookDiv.appendChild(readDisplay);
     
     let removeButton = document.createElement('button');
+    removeButton.classList.add('remove-button');
     removeButton.textContent = 'Remove';
     bookDiv.appendChild(removeButton);
 
