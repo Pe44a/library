@@ -2,7 +2,7 @@ const body = document.querySelector('body');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('.form');
 const submitForm = document.querySelector('#submit-form');
-const bookCards = document.querySelector('.libray');
+const bookCards = document.querySelector('.library');
 
 // Input values
 let titleInput = document.querySelector('#title');
